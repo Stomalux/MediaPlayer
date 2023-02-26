@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">MediaPlayer</string>
     <string name="play">Play</string>
+    <string name="like">Like</string>
+    <string name="remove">Remove</string>
+    <string name="more">More</string>
+    <string name="album">Album</string>
+    <string name="executor">Executor</string>
+    <string name="previous">Previous</string>
+    <string name="stop">Stop</string>
+    <string name="next">Next</string>
+    <string name="retry">Retry</string>
 </resources>

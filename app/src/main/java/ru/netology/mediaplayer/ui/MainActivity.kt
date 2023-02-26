@@ -1,9 +1,10 @@
-package ru.netology.mediaplayer
+package ru.netology.mediaplayer.ui
 
-import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import ru.netology.mediaplayer.MediaLifecycleObserver
+import ru.netology.mediaplayer.R
 
 class MainActivity : AppCompatActivity() {
 
