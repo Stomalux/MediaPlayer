@@ -10,8 +10,14 @@ import androidx.activity.viewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
+import ru.netology.mediaplayer.BuildConfig
 import ru.netology.mediaplayer.MediaLifecycleObserver
 import ru.netology.mediaplayer.R
+import ru.netology.mediaplayer.adapter.MelodiAdapter
+import ru.netology.mediaplayer.databinding.ActivityMainBinding
+import ru.netology.mediaplayer.dto.Album
+import ru.netology.mediaplayer.dto.Track
+import ru.netology.mediaplayer.veiwmodels.PlayerViewModel
 import kotlin.coroutines.EmptyCoroutineContext
 
 @AndroidEntryPoint
@@ -21,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     private var job: Job? = null
     private var mediaPlayer: MediaPlayer? = MediaPlayer()
     private val viewModel: PlayerViewModel by viewModels()
-    private var adapter: SongsAdapter? = null
+    private var adapter: MelodiAdapter? = null
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
