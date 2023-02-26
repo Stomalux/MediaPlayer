@@ -7,7 +7,10 @@ import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ru.netology.mediaplayer.R
 import ru.netology.mediaplayer.dto.Track
+import ru.netology.mediaplayer.databinding.OneMelodiBinding
+
 
 interface actionListener {
     fun onLikeListener(track: Track)
@@ -22,7 +25,7 @@ class MelodyAdapter(
 ) : ListAdapter<Track, MelodyAdapter.MelodyAdapterViewHolder>(PostDiffCallback()) {
 
     class MelodyAdapterViewHolder(
-        private val binding: SongItemBinding,
+        private val binding: OneMelodiBinding,
         private val actionListener: actionListener,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(track: Track) {
@@ -67,7 +70,7 @@ class MelodyAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MelodyAdapterViewHolder {
-        val binding = SongItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = OneMelodiBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MelodyAdapterViewHolder(binding, actionListener)
     }
 
@@ -83,7 +86,5 @@ class PostDiffCallback : DiffUtil.ItemCallback<Track>() {
     override fun areContentsTheSame(oldItem: Track, newItem: Track): Boolean {
         return oldItem == newItem
     }
-
-    //Уберем мерцание
     override fun getChangePayload(oldItem: Track, newItem: Track): Any = Unit
 }
