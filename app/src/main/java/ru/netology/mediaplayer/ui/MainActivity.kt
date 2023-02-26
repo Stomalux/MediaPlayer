@@ -11,9 +11,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import ru.netology.mediaplayer.BuildConfig
-import ru.netology.mediaplayer.MediaLifecycleObserver
 import ru.netology.mediaplayer.R
-import ru.netology.mediaplayer.adapter.MelodiAdapter
+import ru.netology.mediaplayer.adapter.MelodyAdapter
+import ru.netology.mediaplayer.adapter.actionListener
 import ru.netology.mediaplayer.databinding.ActivityMainBinding
 import ru.netology.mediaplayer.dto.Album
 import ru.netology.mediaplayer.dto.Track
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     private var job: Job? = null
     private var mediaPlayer: MediaPlayer? = MediaPlayer()
     private val viewModel: PlayerViewModel by viewModels()
-    private var adapter: MelodiAdapter? = null
+    private var adapter: MelodyAdapter? = null
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
             val tracks = album.tracks
             tracks.filter { track -> track.id in trackSettings }.map {filteringTrack -> filteringTrack.isLiked = true }
 
-            adapter = SongsAdapter(object : actionListener {
+            adapter = MelodyAdapter(object : actionListener {
                 override fun onLikeListener(track: Track) {
                     like(it.album, track)
                 }

@@ -8,9 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.mediaplayer.dto.Track
-import ru.netology.singlealbumapp.R
-import ru.netology.singlealbumapp.databinding.SongItemBinding
-import ru.netology.singlealbumapp.dto.Track
 
 interface actionListener {
     fun onLikeListener(track: Track)
@@ -20,11 +17,11 @@ interface actionListener {
     fun onMenuClickListenerTwo(track: Track)
 }
 
-class MelodiAdapter(
+class MelodyAdapter(
     private val actionListener: actionListener,
-) : ListAdapter<Track, MelodiAdapter.SongsAdapterViewHolder>(PostDiffCallback()) {
+) : ListAdapter<Track, MelodyAdapter.MelodyAdapterViewHolder>(PostDiffCallback()) {
 
-    class SongsAdapterViewHolder(
+    class MelodyAdapterViewHolder(
         private val binding: SongItemBinding,
         private val actionListener: actionListener,
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -69,12 +66,12 @@ class MelodiAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongsAdapterViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MelodyAdapterViewHolder {
         val binding = SongItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return SongsAdapterViewHolder(binding, actionListener)
+        return MelodyAdapterViewHolder(binding, actionListener)
     }
 
-    override fun onBindViewHolder(holder: SongsAdapterViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: MelodyAdapterViewHolder, position: Int) =
         holder.bind(getItem(position))
 }
 

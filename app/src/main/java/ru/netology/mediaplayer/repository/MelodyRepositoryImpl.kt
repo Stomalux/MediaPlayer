@@ -2,14 +2,13 @@ package ru.netology.mediaplayer.repository
 
 import android.app.Application
 import android.content.Context
-//import androidx.viewbinding.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.*
 import ru.netology.mediaplayer.dto.Album
 import ru.netology.mediaplayer.dto.Track
 import ru.netology.mediaplayer.BuildConfig
-import ru.netology.mediaplayer.dto.errors.HttpError
+import ru.netology.mediaplayer.errors.HttpError
 import java.io.IOException
 import javax.inject.Inject
 

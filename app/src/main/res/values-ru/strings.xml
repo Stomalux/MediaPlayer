@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MediaPlayer</string>
+    <string name="error_msg">Ошибка</string>
+    <string name="play">Воспроизвести</string>
+    <string name="remove">Удалить</string>
+    <string name="more">Больше</string>
+    <string name="like">Лайк</string>
+    <string name="ok_text">Ок</string>
+    <string name="additional_action_one">действие 1</string>
+    <string name="additional_action_two">действие 2</string>
+    <string name="album">Альбом</string>
+    <string name="track">Трек</string>
+    <string name="executor">Исполнитель</string>
+    <string name="published">Публикация</string>
+    <string name="genre">Жанр</string>
+    <string name="retry">повторить</string>
+    <string name="unknown_error">Ошибка</string>
+    <string name="previous">Предыдущий</string>
+    <string name="next">Следующий</string>
+    <string name="stop">Стоп</string>
+</resources>
