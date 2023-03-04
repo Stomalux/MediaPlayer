@@ -86,5 +86,7 @@ class PostDiffCallback : DiffUtil.ItemCallback<Track>() {
     override fun areContentsTheSame(oldItem: Track, newItem: Track): Boolean {
         return oldItem == newItem
     }
+
+    //Уберем мерцание
     override fun getChangePayload(oldItem: Track, newItem: Track): Any = Unit
 }

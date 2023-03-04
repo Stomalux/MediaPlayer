@@ -19,13 +19,12 @@ import ru.netology.mediaplayer.dto.Album
 import ru.netology.mediaplayer.dto.Track
 import ru.netology.mediaplayer.veiwmodels.PlayerViewModel
 import kotlin.coroutines.EmptyCoroutineContext
-
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
     private val viewModel: PlayerViewModel by viewModels()
     private var adapter: MelodyAdapter? = null
     private var mediaPlayer: MediaPlayer? = MediaPlayer()
-
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var album: Album
@@ -40,8 +39,8 @@ class MainActivity : AppCompatActivity() {
         binding.swipeRefreshLayout.setOnRefreshListener {
             viewModel.getAlbum()
         }
-        with(binding) {
 
+        with(binding) {
             next.setOnClickListener {
                 val album = viewModel.getCurrentAlbum()
                 val track = viewModel.getNextTrack() ?: return@setOnClickListener
@@ -67,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.getAlbum()
 
-        val melodyRecyclerView = binding.songsList
+        val songsRecyclerView = binding.songsList
         viewModel.data.observe(this) {
             if (binding.swipeRefreshLayout.isRefreshing)
                 binding.swipeRefreshLayout.isRefreshing = false
@@ -141,7 +140,7 @@ class MainActivity : AppCompatActivity() {
                 play(album, currentTrack)
             }
 
-            melodyRecyclerView.adapter = adapter
+            songsRecyclerView.adapter = adapter
             adapter?.submitList(tracks)
         }
 
@@ -276,44 +275,3 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//class MainActivity : AppCompatActivity() {
-//
-//    private val observer = MediaLifecycleObserver()
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
-//
-//        lifecycle.addObserver(observer)
-//
-//
-//        findViewById<View>(R.id.play).setOnClickListener {
-//
-//           observer.apply {
-//                   // resources.openRawResourceFd(R.raw.a1).use { afd ->
-//                   //mediaPlayer?.setDataSource(afd.fileDescriptor,afd.startOffset,afd.length)
-//                   mediaPlayer?.setDataSource("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
-//           }.play()
-//
-//        }
-//    }
-//}
