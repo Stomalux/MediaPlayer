@@ -20,11 +20,14 @@ class MelodyRepositoryImpl @Inject constructor(
     private val httpClient: OkHttpClient,
 ) : MelodyRepository {
 
+
+
+    private val prefs = application.getSharedPreferences("likedTracks", Context.MODE_PRIVATE)
     private val type = TypeToken.getParameterized(List::class.java, Track::class.java).type
     private val gson = Gson()
-    private val prefs = application.getSharedPreferences("likedTracks", Context.MODE_PRIVATE)
 
-      override fun getAlbum(callback: MelodyRepository.Callback<Album>) {
+
+    override fun getAlbum(callback: MelodyRepository.Callback<Album>) {
         val request = Request.Builder()
             .url("${BASE_URL}album.json")
             .build()

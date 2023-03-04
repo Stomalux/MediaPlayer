@@ -22,12 +22,14 @@ import kotlin.coroutines.EmptyCoroutineContext
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+    private val viewModel: PlayerViewModel by viewModels()
+    private var adapter: MelodyAdapter? = null
+    private var mediaPlayer: MediaPlayer? = MediaPlayer()
+
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var album: Album
     private var job: Job? = null
-    private var mediaPlayer: MediaPlayer? = MediaPlayer()
-    private val viewModel: PlayerViewModel by viewModels()
-    private var adapter: MelodyAdapter? = null
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,15 +41,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.getAlbum()
         }
         with(binding) {
-            stop.setOnClickListener {
-                val track = viewModel.getCurrentTrack() ?: return@setOnClickListener
-                if (track.initInPlayer == true) {
-                    track.initInPlayer = false
-                    track.isPlayed = false
-                    adapter?.notifyDataSetChanged()
-                }
-                releaseMediaPlayer()
-            }
+
             next.setOnClickListener {
                 val album = viewModel.getCurrentAlbum()
                 val track = viewModel.getNextTrack() ?: return@setOnClickListener
@@ -60,7 +54,15 @@ class MainActivity : AppCompatActivity() {
                 if (album != null)
                     play(album, track)
             }
-
+            stop.setOnClickListener {
+                val track = viewModel.getCurrentTrack() ?: return@setOnClickListener
+                if (track.initInPlayer == true) {
+                    track.initInPlayer = false
+                    track.isPlayed = false
+                    adapter?.notifyDataSetChanged()
+                }
+                releaseMediaPlayer()
+            }
         }
 
         viewModel.getAlbum()
